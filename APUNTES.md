@@ -1,183 +1,237 @@
-# 010a — Plantilla: esqueleto HTML5
+# 010b — Plantilla: la cabecera
 
 ## De qué va esta sesión
 
-Este es el primer bloque del curso. No hay una carpeta anterior que copiar: la página se escribe desde cero.
+Ayer la página estaba en blanco a propósito. Hoy vais a ocupar solo la franja de arriba: tres líneas con los textos del curso y una foto a la derecha, sobre un azul. El menú, el contenido y el pie siguen sin existir. Si al recargar veis algo debajo de esa franja, os habéis adelantado.
 
-Hoy no vais a ver una página con aspecto de curso. Vais a dejar en pie el esqueleto sobre el que, en las sesiones siguientes, iréis colocando la cabecera, el menú, el contenido y el pie. Si al terminar recargáis y la página sale en blanco, el trabajo de hoy está bien: dentro del cuerpo todavía no hay nada que el navegador pueda mostrar.
+El `head` no se vuelve a montar. Se copia del ejercicio anterior y solo cambia el título de la pestaña, para que coincida con la carpeta nueva. La hoja `styles.css` sigue siendo la misma idea: un archivo enlazado desde el HTML. Ayer estaba vacío. Hoy escribís dentro la primera tanda de reglas, bajo un comentario que pone `010b`, y no borréis ese comentario cuando acabéis. Las sesiones siguientes añadirán las suyas debajo.
 
-Lo que sí tiene que existir es un documento HTML5 reconocible. La pestaña llevará el nombre de la carpeta, un icono al lado, y el documento estará enlazado a una hoja de estilos que aún no contiene ni una regla. Esa hoja vacía es deliberada. A partir de la próxima sesión escribiréis el CSS al final de ese mismo archivo, y el enlace que pongáis hoy seguirá sirviendo sin tocarlo.
-
-Escribid vosotros cada trozo. Si os atascáis, comparad con el kit de esta carpeta. No sustituyáis vuestro archivo por una copia del proyecto entero: si lo pegáis de golpe, no veréis qué cambia en cada paso y el siguiente día no sabréis qué tocar.
-
-**URL:** `http://localhost:4300/010-Plantilla/010a-Plantilla-HTML5/`
+**URL:** `http://localhost:4300/010-Plantilla/010b-Plantilla-header/`
 
 ---
 
-## Dónde se abre la página
+## Partís de 010a
 
-En este curso las páginas no se abren con la extensión Live Server, ni haciendo doble clic en el archivo. Hay un servicio en Docker que publica la carpeta `vanilla-app/sites/` en el puerto 4300 del ordenador. El navegador le pide la página a ese servicio, y el camino de la URL repite las carpetas que hay dentro de `sites/`. Por eso la dirección de hoy es la del apartado anterior.
+Duplicad la carpeta `010a-Plantilla-HTML5` y renombrad la copia a `010b-Plantilla-header`. Si preferís partir del kit, abrid esa carpeta y vaciad el `body` y `styles.css` antes de seguir: si dejáis la cabecera ya pintada, no veréis qué cambia en cada paso.
 
-Mirad la barra de direcciones antes de juzgar el ejercicio. Tiene que empezar por `http://localhost:4300`. Si empieza por `file:///`, habéis abierto el archivo del disco: el navegador no está hablando con el servicio, y más adelante las rutas y los avisos no serán los de clase. Cerrad esa pestaña y volved a escribir la URL.
-
-Si `localhost:4300` no llega a abrir, el contenedor no está arrancado. Eso no se corrige cambiando el HTML. Comprobad que el servicio está en marcha y, hasta que la dirección responda, no busquéis el fallo en el documento.
-
----
-
-## Paso 1 — La carpeta y el hueco de las imágenes
-
-Cread la carpeta `010a-Plantilla-HTML5` dentro de `010-Plantilla`. Dentro, otras dos: `css` e `img`.
-
-En `img` copiad el archivo `favicon.ico` del material de la sesión. El icono de la pestaña no se dibuja: es un archivo que el navegador ya sabe colocar junto al título. Dejad `css` creada y, de momento, vacía. El archivo `styles.css` lo vais a crear un poco más tarde, a propósito, para ver qué ocurre cuando el HTML lo pide y todavía no está.
-
-Abrid la URL de la sesión. Como aún no existe `index.html`, el servicio no tiene una página que entregar. Veréis un aviso de que no encuentra el recurso, o un listado de lo que hay en la carpeta. Es lo esperado. La página en blanco llegará en cuanto guardéis el documento del paso siguiente.
-
----
-
-## Paso 2 — El documento, todavía sin cabeza útil
-
-Cread `index.html` al mismo nivel que las carpetas `css` e `img`. Escribid solo esto:
+En el `index.html` copiado, cambiad únicamente el texto del `<title>`:
 
 ```html
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-</head>
-
-<body>
-</body>
-
-</html>
+<title>010b-Plantilla-header</title>
 ```
 
-Guardad y recargad la URL. La página está en blanco. Mirad la pestaña: no pone un título vuestro. Sale la propia dirección, o la palabra localhost. Eso es lo que vamos a sustituir cuando el `head` tenga un `<title>`. Si seguís en el aviso de «no encontrado», el archivo no se llama `index.html` o no está dentro de `010a-Plantilla-HTML5`.
+El resto del `head` se queda igual: charset, viewport, descripción, icono y el `<link>` de `./css/styles.css`. `styles.css` sigue vacío. Copiad también `user.png` dentro de `img/`, junto al icono que ya trajisteis de 010a. La foto es un cuadrado de 512 píxeles. Ahora mismo no se usa, y por eso no la veis.
+
+Abrid la URL de hoy, no la de ayer. La barra tiene que seguir empezando por `http://localhost:4300`. La página está en blanco y la pestaña dice `010b-Plantilla-header`. Si la pestaña dice `010a-Plantilla-HTML5`, estáis mirando el ejercicio anterior.
 
 ---
 
-## Paso 2b — Qué acaban de hacer esas cuatro líneas
+## Paso 1 — Tres frases, todavía negras
 
-`<!DOCTYPE html>` le dice al navegador que el documento es HTML5. Sin esa primera línea, algunos navegadores tratan la página como un documento antiguo y, cuando más adelante haya CSS, no calculan los tamaños igual. Hoy, con la página vacía, no lo notaréis. Se escribe al principio para no tener que acordarse el día en que el diseño ya esté montado.
-
-`<html lang="es">` abre el documento y declara que el idioma es el español. No traduce nada. Le sirve al lector de pantalla y al navegador para saber en qué idioma está el texto cuando lo haya. `lang="es"` va en la etiqueta `html`, no dentro del `head`.
-
-`<head>` es la zona de datos de la página: título, icono, hojas de estilos. Nada de lo que escribáis ahí sale en el cuerpo de la página. `<body>` es lo que sí se muestra. Ahora mismo los dos están vacíos, y por eso veis blanco.
-
----
-
-## Paso 3 — El juego de caracteres
-
-Dentro de `<head>`, como primera línea, escribid:
-
-```html
-<meta charset="UTF-8">
-```
-
-Esa etiqueta no se ve en la página. Le dice al navegador que las letras del archivo están guardadas en UTF-8, el juego de caracteres con el que escribimos las tildes y la eñe. Si más adelante ponéis una palabra con tilde y el navegador adivina mal, veréis símbolos raros en lugar de la vocal. Hoy el título todavía no lleva tilde, así que la página sigue igual de blanca. La declaración se pone ahora, antes de cualquier texto, porque tiene que ir al principio del `head`.
-
-Recargad. Abrid las herramientas del navegador con el botón derecho, Inspeccionar, y quedaos en la pestaña Elementos. Desplegad `<head>`: el `meta` del charset está ahí. Si no aparece, no habéis guardado el archivo que el servicio está entregando, o estáis inspeccionando otra pestaña.
-
-Fijaos en cómo está escrita la etiqueta. En HTML5, `<meta>` no se cierra con `/>`. La barra final es de otra forma de marcar el mismo documento, y en este curso no la usamos. Lo mismo vale, en los pasos siguientes, para `<link>`.
-
----
-
-## Paso 4 — El ancho en el móvil
-
-Justo debajo del charset, añadid:
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
-
-Un móvil, si nadie le dice lo contrario, finge ser una pantalla de escritorio muy ancha y luego encoge la página para que quepa. Esta línea le dice que el ancho es el del propio aparato y que el zoom inicial es 1, es decir, sin alejar la página. Hoy no hay cabecera ni columnas. Si estrecháis la ventana, no veréis un cambio, y es normal. La línea se queda puesta para que, cuando llegue el diseño, no empecéis con el móvil descuadrado y penséis que el fallo está en el CSS.
-
-Recargad. En Elementos, el `head` lleva ya dos `meta`, en este orden: primero el charset, después el viewport. El orden importa menos que en otros casos, pero el charset queremos verlo siempre el primero, porque es lo que evita las tildes rotas desde la primera letra.
-
----
-
-## Paso 5 — La descripción, que tampoco se ve
-
-Debajo del viewport, añadid:
-
-```html
-<meta name="description" content="La Plantilla en HTML5">
-```
-
-Tampoco sale dibujada en la página. Es el resumen que usan los buscadores, y algunas vistas previas, cuando alguien comparte el enlace. En clase os sirve para reconocer el ejercicio al abrir el `head` en el inspector. El texto es «La Plantilla en HTML5», con la pe de Plantilla en mayúscula, igual que en el resto del bloque.
-
-Si estáis pensando que esta frase ya podría ser el título de la pestaña, son dos datos distintos. La descripción no sustituye al `<title>`. Recargad y mirad la pestaña: seguís sin un título vuestro. En Elementos, en cambio, el tercer `meta` ya está debajo de los otros dos.
-
----
-
-## Paso 6 — El título de la pestaña
-
-Añadid, debajo de los tres `meta`:
-
-```html
-<title>010a-Plantilla-HTML5</title>
-```
-
-El texto interior es el nombre de la carpeta en la que está este `index.html`, carácter por carácter, con las mismas mayúsculas y el mismo guion. No escribáis «Plantilla» a secas, ni «Ejercicio 1». Dentro de poco tendréis varias prácticas abiertas a la vez, y la pestaña es lo único que las distingue sin tener que leer la URL entera.
-
-Guardad y recargad. La pestaña deja de mostrar la dirección y pasa a mostrar `010a-Plantilla-HTML5`. Si no cambia, estáis viendo otra pestaña, u otro archivo: el de una carpeta distinta, o el que abristeis con `file://`. Volved a la URL de la sesión y recargad esa.
-
----
-
-## Paso 7 — El icono de la pestaña
-
-El archivo `favicon.ico` ya está dentro de `img`, desde el paso 1. Ahora decidle al documento dónde encontrarlo. Debajo del `title`:
-
-```html
-<link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-```
-
-`./` significa «empezando en la carpeta de este HTML». Desde `index.html`, hay que entrar en `img` y ahí está el icono. Vais a ver la misma forma de escribir en la hoja de estilos (`./css/styles.css`). Usad el `./` también aquí, para que las dos rutas se lean igual.
-
-Si estáis pensando en escribir `/img/favicon.ico`, con la barra pegada al principio, esa barra no significa «esta carpeta». Significa «la raíz del servicio», es decir `http://localhost:4300/img/`, y ahí no habéis copiado el icono. El archivo está junto a este ejercicio, no en la raíz de todos los ejercicios.
-
-Recargad. Junto al título de la pestaña aparece el icono. Si el título está bien y el icono no, abrid la pestaña Red del inspector y buscad `favicon.ico`. Un 404 quiere decir que la ruta no coincide con el archivo. Si el estado es 200 y aun así veis el icono de otro día, el navegador está reutilizando el que guardó antes: recargad sin usar esa copia, con Ctrl+F5 (en Mac, Cmd+Shift+R).
-
----
-
-## Paso 8 — Pedir la hoja de estilos antes de crearla
-
-Añadid esta línea al final del `head`. No creéis todavía el archivo:
-
-```html
-<link rel="stylesheet" href="./css/styles.css">
-```
-
-Guardad y recargad. Abrid el inspector y entrad en la consola. Ahí aparece un aviso de que `styles.css` no se ha podido cargar. En la pestaña Red, la misma petición sale en rojo, con estado 404: el HTML la está pidiendo en `./css/styles.css` y en esa carpeta no hay ningún archivo con ese nombre.
-
-La página sigue en blanco. El 404 de la hoja no rompe el documento; solo os dice que el enlace apunta a un sitio vacío. Dejad el `<link>` como está. El fallo se quita creando el archivo, no borrando la línea.
-
----
-
-## Paso 8b — El archivo vacío, y el aviso que desaparece
-
-Ahora sí: dentro de `css`, cread `styles.css`. No escribáis ninguna regla. Ni un comentario. Guardad ese archivo vacío.
-
-Volved al navegador y recargad. Mirad otra vez la consola: el aviso del 404 ya no está. En Red, `styles.css` responde 200 y el tamaño es 0, porque el archivo no contiene nada. La página continúa en blanco. Es el resultado de hoy. El enlace no pinta nada porque no hay reglas que aplicar.
-
-Si os parece raro enlazar una hoja vacía, pensad en el día siguiente. Si esperáis a tener CSS «de verdad» para crear el archivo, un 404 de la ruta y un diseño que no se aplica se parecen mucho, y no sabréis cuál de los dos estáis mirando. Hoy la ruta ya está comprobada. Mañana solo añadiréis reglas al final de ese archivo.
-
-La ruta, igual que la del icono, se lee desde la carpeta del HTML. `./css/styles.css` entra en `css` y abre `styles.css`. No usa una barra inicial.
-
----
-
-## Paso 9 — El cuerpo, vacío a propósito
-
-Dentro de `<body>` dejad un comentario y nada más:
+Sustituid el contenido del `body` por una cabecera con tres párrafos. Todavía sin clases y sin foto:
 
 ```html
 <body>
-  <!-- Aquí irán header, nav, main y footer en los siguientes bloques -->
+  <header>
+    <p>Ejercicios – FUNDAMENTOS DE JS (ES6)</p>
+    <p>Desarrollo WEB en entorno cliente</p>
+    <p>Cabecera con textos y foto</p>
+  </header>
 </body>
 ```
 
-Un comentario no se muestra. Dentro de unas semanas, al abrir el archivo, ese texto os recuerda que el hueco está reservado y no es un olvido. `header` será la cabecera, `nav` el menú, `main` el contenido y `footer` el pie. Hoy no los escribís. Si los añadís ahora, la sesión siguiente parte de un documento distinto al del resto de la clase.
+Guardad y recargad. Arriba a la izquierda aparecen las tres frases, en negro, una debajo de otra, con un hueco entre ellas. Ese hueco no lo habéis escrito. Lo pone el navegador: todo párrafo trae un margen de serie. Dentro de un rato lo vais a anular, y entonces veréis las tres líneas juntas. Si ahora ya estuvieran pegadas, el margen no estaría actuando y habría que mirar si el CSS de ayer dejó alguna regla. Tiene que estar vacío.
 
-Recargad. La página sigue en blanco, y la pestaña conserva el título y el icono. Abrid el código fuente (botón derecho, Ver código fuente de la página) y comprobad que el comentario está dentro del `body`. En la página normal no puede leerse. Si veis esa frase escrita en la página, faltan `<!--` al empezar y `-->` al terminar, y el navegador la está tratando como texto visible.
+---
+
+## Paso 1b — Por qué son párrafos, y por qué la clase aún no se nota
+
+Esas tres líneas no son el título de esta página. El título de la página ya está en la pestaña. Las dos primeras se van a repetir en todas las prácticas del curso: son la marca, no el nombre del ejercicio. La tercera, la tagline, no se repite. Resume lo que estáis construyendo en este paso. Hoy es la cabecera, con los textos y la foto. En la sesión siguiente la cambiaréis por una frase de ese día.
+
+Por eso no uséis `h1`, ni `h2`, ni `h3` dentro de la cabecera. El `h1` llegará más adelante, dentro del contenido, y nombrará la página que estéis viendo. Si lo gastáis hoy en la franja azul, ese hueco ya no estará libre.
+
+Envolved los tres párrafos y ponedles clase. La clase es el nombre con el que el CSS los va a encontrar:
+
+```html
+<header>
+  <div class="header-content">
+    <p class="header-title">Ejercicios – FUNDAMENTOS DE JS (ES6)</p>
+    <p class="header-subtitle">Desarrollo WEB en entorno cliente</p>
+    <p class="header-tagline">Cabecera con textos y foto</p>
+  </div>
+</header>
+```
+
+Recargad. El aspecto no cambia: siguen negras, con el mismo hueco. Es lo esperado. Una clase no pinta nada hasta que una regla la usa. Si estabais esperando la franja azul en este momento, todavía no hay CSS.
+
+El guion de la primera frase es la raya `–`, no el guion corto del teclado. Si copiáis el texto de estos apuntes, la raya ya viene puesta.
+
+---
+
+## Paso 2 — La foto, a tamaño real
+
+Debajo del `div` de los textos, todavía dentro de `header`, añadid la foto:
+
+```html
+  <div class="header-profile">
+    <img src="./img/user.png" alt="Foto de perfil">
+  </div>
+```
+
+`./img/user.png` se lee igual que el icono de ayer: desde la carpeta de este HTML, entrad en `img`. `alt` es el texto que queda si la imagen no carga. No es un adorno. Quien no vea la foto lee «Foto de perfil» en su lugar. `<img>` tampoco lleva `/>` al final.
+
+Recargad. Debajo de las tres frases aparece un cuadrado grande, de unos 512 píxeles. Esa es la foto sin órdenes: el navegador la muestra a su tamaño de archivo. La franja todavía no existe. Si en vez de la foto veis el texto «Foto de perfil» o un icono roto, la ruta no llega al archivo. Comprobad que `user.png` está en `img/` de esta carpeta, no en la de 010a.
+
+Dejad, debajo del `header`, el comentario actualizado. Ayer reservaba cuatro huecos. La cabecera ya está escrita; quedan tres:
+
+```html
+<!-- Aquí irán nav, main y footer en los siguientes bloques -->
+```
+
+Recargad otra vez. El comentario no se ve, igual que ayer. Si la frase aparece en la página, faltan `<!--` y `-->`.
+
+---
+
+## Paso 3 — Solo el azul
+
+Abrid `css/styles.css`. Tiene que seguir vacío. Escribid el comentario de esta sesión y una regla que, de momento, solo pinte el fondo:
+
+```css
+/* 010b — header */
+
+header {
+  padding: 5px;
+  background: #2a5aa3;
+}
+```
+
+`#2a5aa3` es el azul de la cabecera. Lo volveréis a usar en el pie, varias sesiones más adelante. `padding: 5px` deja un poco de aire entre el borde de esa mancha y lo que hay dentro. Cinco píxeles es poco: la franja queda prieta a propósito.
+
+Guardad y recargad. El fondo de la cabecera pasa a azul. El texto sigue negro, el hueco entre frases sigue ahí, y la foto sigue enorme. Si no veis el azul, el `<link>` de `./css/styles.css` no está en el `head`, o estáis recargando la URL de 010a. Forzad la recarga con Ctrl+F5 (en Mac, Cmd+Shift+R) por si el navegador conserva la hoja vacía de antes.
+
+---
+
+## Paso 4 — El texto claro
+
+Dentro de la misma regla `header`, añadid el color de la letra. No creéis una segunda regla `header`:
+
+```css
+header {
+  padding: 5px;
+  background: #2a5aa3;
+  color: rgba(255, 250, 250, 0.9);
+}
+```
+
+`color` lo heredan los párrafos que están dentro. No hace falta pintarlos uno a uno. `rgba` son cuatro cifras: rojo, verde, azul y opacidad. 255, 250, 250 es casi blanco. 0.9 lo deja un poco transparente, así que el azul del fondo se transparenta levemente en las letras.
+
+Recargad. Las tres frases se leen en claro sobre el azul. La foto no cambia de color: una imagen no hereda el `color` del texto.
+
+---
+
+## Paso 5 — Quitar el hueco que puso el navegador
+
+Debajo de la regla `header`, escribid:
+
+```css
+.header-content p {
+  margin: 0;
+}
+```
+
+Esa regla solo afecta a los párrafos que están dentro de `.header-content`. Un párrafo que escribáis mañana en otra zona de la página conservará su margen. Si quitarais el margen de todos los `p` del documento, el día del contenido os faltaría el aire y no sabríais dónde se perdió.
+
+Recargad. Las tres líneas quedan juntas, dentro del azul. La foto sigue debajo, grande. Si el hueco no desaparece, el selector no coincide con el HTML: la clase del `div` tiene que ser `header-content`, y los textos tienen que ser `p` dentro de ese `div`.
+
+---
+
+## Paso 6 — Tres tamaños, un dato cada uno
+
+Añadid una regla por línea. Cada clase cambia solo el tamaño, y en las dos primeras también el grosor:
+
+```css
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.header-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.header-tagline {
+  font-size: 0.875rem;
+}
+```
+
+`rem` toma como referencia el tamaño de letra del documento, que en el navegador suele ser 16 píxeles. `1rem` es ese tamaño. `1.25rem` es un poco mayor. `0.875rem` es un poco menor. Si alguien agranda la letra del navegador, estas tres medidas crecen con ella.
+
+`700` es negrita. `600` es un poco menos fuerte. La tercera línea no lleva `font-weight`. El párrafo ya se pinta en grosor normal, y escribir `400` sería repetir ese valor sin cambiar nada.
+
+Recargad. La primera frase destaca, la segunda queda en medio y «Cabecera con textos y foto» se lee más pequeña. Seguís sin fila: la foto continúa debajo.
+
+---
+
+## Paso 7 — Texto a un lado, foto al otro
+
+Volved a la regla `header` y añadid tres propiedades. El bloque queda así:
+
+```css
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background: #2a5aa3;
+  color: rgba(255, 250, 250, 0.9);
+}
+```
+
+`display: flex` convierte la cabecera en una fila. Sus dos hijos —el bloque de textos y el bloque de la foto— se colocan uno al lado del otro, no uno debajo del otro. `justify-content: space-between` empuja el espacio libre hacia el centro: los textos se quedan a la izquierda y la foto a la derecha. `align-items: center` los alinea en vertical por el medio de la franja, no por el borde de arriba.
+
+Recargad. La foto salta a la derecha. Sigue midiendo 512 píxeles, así que la franja se vuelve altísima y la página parece rota. No borréis el flex. El fallo es el tamaño de la imagen, y se corrige en el paso siguiente.
+
+Debajo de `.header-content p`, añadid la regla del bloque de texto:
+
+```css
+.header-content {
+  flex-grow: 1;
+}
+```
+
+`flex-grow: 1` hace que ese bloque crezca y ocupe el ancho que la foto no necesita. Con `space-between` la foto ya estaba en la derecha; este crecimiento reserva el centro para los textos, en vez de dejar que el cuadro de las frases se encoja a lo que ocupan las palabras. Recargad. El cambio se nota poco mientras la foto siga siendo enorme. Se verá mejor en cuanto la foto mida 60 píxeles.
+
+---
+
+## Paso 8 — La foto, pequeña y redonda
+
+Al final de `styles.css`:
+
+```css
+.header-profile img {
+  width: 60px;
+  height: 60px;
+}
+```
+
+Recargad. La franja baja a una altura normal y la foto es un cuadrado de 60 píxeles, a la derecha. Este archivo ya era cuadrado, así que no se deforma. Si más adelante cambiáis `user.png` por una foto apaisada, el cuadrado la estiraría. Por eso la regla no se queda solo en el tamaño.
+
+Completadla:
+
+```css
+.header-profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+```
+
+`border-radius: 50%` redondea cada esquina hasta la mitad del lado. En un cuadrado, el resultado es un círculo. `object-fit: cover` rellena ese cuadrado con la foto y, si sobra imagen, la recorta en lugar de estirarla. Con la foto de hoy, que ya es cuadrada, no veréis recorte: la propiedad queda escrita para la foto que pongáis después. El `border` es un aro blanco, un poco transparente, para separar el círculo del azul.
+
+Recargad. Cabecera azul, tres líneas juntas con tres tamaños, foto circular a la derecha. Debajo, nada. Así se termina el día.
 
 ---
 
@@ -185,20 +239,22 @@ Recargad. La página sigue en blanco, y la pestaña conserva el título y el ico
 
 | Qué veis | Qué revisar |
 |----------|-------------|
-| `localhost:4300` no abre | El servicio Docker, no el HTML |
-| La barra pone `file://` | Volved a la URL de la sesión |
-| Sigue el «no encontrado» | `index.html` está en `010a-Plantilla-HTML5/` |
-| Pestaña sin vuestro título | Hay un `<title>` y habéis recargado esa pestaña |
-| Tildes raras más adelante | `<meta charset="UTF-8">` es la primera línea del `head` |
-| Icono o CSS en 404 | La ruta lleva `./` y el archivo está en `img/` o en `css/` |
-| El comentario se lee en la página | Faltan `<!--` y `-->` |
+| Página en blanco | El `header` está en el `body` de 010b, y la URL es la de hoy |
+| Pestaña con el nombre de 010a | Habéis abierto la carpeta de ayer |
+| Texto negro sobre azul | Falta `color` dentro de la regla `header` |
+| Hueco entre las tres frases | `.header-content p { margin: 0; }` y las clases del HTML |
+| Foto enorme a la derecha | Faltan `width` y `height` en `.header-profile img` |
+| Foto debajo del texto | Falta `display: flex` en `header` |
+| Foto rota o el texto del `alt` | `user.png` está en `img/` y el `src` empieza por `./img/` |
+| El azul no cambia al guardar | Ctrl+F5. El `<link>` sigue apuntando a `./css/styles.css` |
 
 ---
 
 ## Entrega
 
-La entrega de hoy es la carpeta `010a-Plantilla-HTML5` con tres cosas: `index.html`, `css/styles.css` vacío e `img/favicon.ico`. En el navegador, por la URL de la sesión, la página está en blanco, la pestaña dice `010a-Plantilla-HTML5` y lleva el icono, y en la pestaña Red `styles.css` responde 200.
+La entrega es la carpeta `010b-Plantilla-header`. En la URL de hoy se ve la franja azul, las tres frases y la foto circular. Debajo de la cabecera no hay menú, ni contenido, ni pie. `styles.css` empieza por el comentario `/* 010b — header */` y no contiene más reglas que las de esta sesión.
 
-- [ ] El `<title>` es el nombre de la carpeta
-- [ ] `styles.css` existe, está vacío y el `<link>` usa `./css/styles.css`
-- [ ] El cuerpo no muestra ningún texto
+- [ ] El `<title>` es `010b-Plantilla-header`
+- [ ] En la cabecera no hay `h1`, `h2` ni `h3`
+- [ ] La foto usa `./img/user.png` y mide 60 por 60, en círculo
+- [ ] El comentario `/* 010b — header */` está al principio de la hoja
