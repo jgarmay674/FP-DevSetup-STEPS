@@ -1,9 +1,9 @@
-# 010b — Plantilla: la cabecera
+# 010c — Plantilla: el menú
 
-Segundo paso del bloque. Se parte de la carpeta de 010a. Aquí se escribe la franja de arriba: tres textos del curso y la foto, sobre un azul. El menú, el contenido y el pie todavía no están. `styles.css` deja de estar vacío: entra el primer bloque de reglas, bajo el comentario `/* 010b — header */`.
+Tercer paso del bloque. Se parte de la carpeta de 010b. Debajo de la cabecera entra una barra marrón con cuatro enlaces en fila. Los tres primeros salen a documentación de JavaScript. El cuarto, «Ejercicios», apunta a `./ejercicios/` y esa carpeta todavía no existe: el enlace tiene que fallar. La tagline de este paso es «Menú horizontal con enlaces». El CSS de la cabecera no se toca; lo nuevo va al final, bajo `/* 010c — nav base */`.
 
 Se abre con el servicio Docker, no con Live Server ni con doble clic:
 
-http://localhost:4300/010-Plantilla/010b-Plantilla-header/
+http://localhost:4300/010-Plantilla/010c-Plantilla-nav/
 
 El camino de clase está en `APUNTES.md`, en esta misma carpeta.

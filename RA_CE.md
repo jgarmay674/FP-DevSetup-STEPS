@@ -1,17 +1,17 @@
-# 010b — RA y CE
+# 010c — RA y CE
 
 ## Resumen técnico
 
-La plantilla gana la cabecera: título del módulo, subtítulo, frase de la portada y la imagen de perfil. Sigue siendo HTML y CSS, sin script.
+Se añade la barra de navegación, todavía sin los enlaces de las prácticas. HTML y CSS. Sin script.
 
 ## Resultados de Aprendizaje trabajados
 
-RA1. RA6, en la misma separación de capas que el paso anterior.
+RA1. RA6.
 
 ## Criterios de Evaluación acreditados
 
-- **RA1.c** La cabecera se marca con HTML (`header`, párrafos e imagen).
-- **RA1.e** El marcado nuevo se apoya en la hoja CSS ya enlazada.
-- **RA6.h** El texto y la imagen viven en el HTML. El CSS decide cómo se ven. No hay JavaScript que cambie la cabecera.
+- **RA1.c** La barra es una lista HTML dentro de `nav`.
+- **RA1.e** El menú se marca en el HTML y su presentación queda en la hoja CSS.
+- **RA6.h** La estructura del menú y su aspecto están en capas distintas. No hay comportamiento asociado.
 
-No entra RA3.c: el cambio de aspecto lo hace la hoja de estilo al cargar, no un script sobre el documento.
+No entran eventos ni DOM por script: la barra no se recorre ni se modifica desde JavaScript.
